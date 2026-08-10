@@ -1,0 +1,13 @@
+{
+  "domain": "zha_connectivity_sensor",
+  "name": "ZHA Connectivity Sensor",
+  "after_dependencies": ["zha"],
+  "codeowners": ["@jeverley"],
+  "config_flow": true,
+  "documentation": "https://github.com/jeverley/zha-connectivity-sensor",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/jeverley/zha-connectivity-sensor/issues",
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

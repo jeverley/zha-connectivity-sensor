@@ -1,0 +1,44 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "ZHA Connectivity Sensor",
+        "data": {
+          "enable_new_devices": "Enable by default"
+        },
+        "data_description": {
+          "enable_new_devices": "Enable for new devices by default."
+        }
+      }
+    },
+    "abort": {
+      "zha_not_configured": "ZHA isn't configured yet. Set up the ZHA integration first, then add ZHA Connectivity Sensor."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ZHA Connectivity Sensor Options",
+        "data": {
+          "enable_new_devices": "Enable by default"
+        },
+        "data_description": {
+          "enable_new_devices": "Enable for new devices by default."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connectivity": {
+        "name": "Connectivity"
+      }
+    }
+  },
+  "issues": {
+    "zha_unavailable": {
+      "title": "ZHA has been unavailable for a while",
+      "description": "ZHA Connectivity Sensor hasn't been able to reach ZHA's gateway for over 15 minutes. All connectivity sensors are reporting \"disconnected\" until ZHA becomes available again -- this usually means ZHA itself needs attention (check Settings > Devices & Services > ZHA)."
+    }
+  }
+}
