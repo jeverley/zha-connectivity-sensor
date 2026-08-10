@@ -53,8 +53,8 @@ ZHA's 2024 rewrite onto an external library, including through ZHA's
 most recent releases, but there's no guarantee that continues.
 
 A [nightly test](.github/workflows/validate.yaml) checks that this
-internal state still looks the way this integration expects, to catch a
-break as soon as possible after it happens.
+internal state is consistent, to catch a break as soon as possible after
+it happens.
 
 ## Development
 
