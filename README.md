@@ -42,6 +42,14 @@ Devices present at setup always start enabled; the new-device option
 controls anything paired afterwards, and can be changed later from the
 integration's options.
 
+## How it works
+
+This integration reads ZHA's internal gateway state directly, since ZHA
+doesn't expose per-device connectivity through any public API. That
+internal state isn't a stable contract, so a ZHA update could change or
+remove it without notice, which may break this integration until it's
+updated to match.
+
 ## Development
 
 This integration was developed with the assistance of AI (Claude).
