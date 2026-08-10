@@ -8,7 +8,7 @@ The sensor reports `connected` (on) when a device is reachable,
 `disconnected` (off) when it isn't, matching the binary sensor
 [connectivity device class](https://www.home-assistant.io/integrations/binary_sensor/#device-class).
 While ZHA itself is starting up, reloading, or briefly unreachable, the
-sensor reports "disconnected" rather than "unavailable".
+sensor reports `disconnected` rather than `unavailable`.
 
 Each sensor also carries a `last_seen` attribute showing when the device
 was last seen.
@@ -44,17 +44,16 @@ integration's options.
 
 ## How it works
 
-This integration reads ZHA's internal gateway state directly, since ZHA
+This integration reads ZHA's internal gateway state directly because ZHA
 doesn't expose per-device connectivity through any public API. That
-internal state isn't a documented, stable contract, so a ZHA update could
-change or remove it without notice, which may break this integration
-until it's updated to match. In practice, this has held steady since
-ZHA's 2024 rewrite onto an external library, including through ZHA's
-most recent releases, but there's no guarantee that continues.
+internal state isn't a documented stable contract, so a ZHA update could
+change or remove it without notice.
+
+In practice, this has held steady since ZHA's 2024 rewrite onto an 
+external library, including through ZHA's most recent releases.
 
 A [nightly test](.github/workflows/validate.yaml) checks that this
-internal state is consistent, to catch a break as soon as possible after
-it happens.
+internal state is consistent.
 
 ## Development
 
