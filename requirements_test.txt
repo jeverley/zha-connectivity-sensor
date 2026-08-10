@@ -2,3 +2,6 @@ pytest
 homeassistant
 zha
 zha-quirks
+aiousbwatcher
+universal-silabs-flasher
+ha-silabs-firmware-client
