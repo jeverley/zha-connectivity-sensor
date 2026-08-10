@@ -42,6 +42,10 @@ Devices present at setup always start enabled; the new-device option
 controls anything paired afterwards, and can be changed later from the
 integration's options.
 
+## Development
+
+This integration was developed with the assistance of AI (Claude).
+
 ## License
 
 [MIT](LICENSE)
