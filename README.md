@@ -1,7 +1,7 @@
 # ZHA Connectivity Sensor
 
 Adds a "Connectivity" binary sensor for devices on your
-[ZHA](https://www.home-assistant.io/integrations/zha/) network, exposing
+[Zigbee Home Automation (ZHA)](https://www.home-assistant.io/integrations/zha/) network, exposing
 the internal ZHA connectivity state.
 
 The sensor reports `connected` (on) when a device is reachable,
