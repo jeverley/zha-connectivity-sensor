@@ -46,9 +46,11 @@ integration's options.
 
 This integration reads ZHA's internal gateway state directly, since ZHA
 doesn't expose per-device connectivity through any public API. That
-internal state isn't a stable contract, so a ZHA update could change or
-remove it without notice, which may break this integration until it's
-updated to match.
+internal state isn't a documented, stable contract, so a ZHA update could
+change or remove it without notice, which may break this integration
+until it's updated to match. In practice, this has held steady since
+ZHA's 2024 rewrite onto an external library, including through ZHA's
+most recent releases, but there's no guarantee that continues.
 
 ## Development
 
