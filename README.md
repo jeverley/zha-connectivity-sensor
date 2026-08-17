@@ -52,8 +52,8 @@ change or remove it without notice.
 In practice, this has held steady since ZHA's 2024 rewrite onto an 
 external library, including through ZHA's most recent releases.
 
-A [nightly test](.github/workflows/validate.yaml) checks that this
-internal state is consistent.
+A [nightly test](tests/test_zha_contract.py) checks that this internal
+state is consistent.
 
 ## Development
 
