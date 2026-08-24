@@ -32,11 +32,11 @@ for more than 15 minutes.
 **Manual:** drop `custom_components/zha_connectivity_sensor` into your
 `config/custom_components/` folder and restart.
 
-## Setting it up
+## Setup
 
-Add it from Settings -> Devices & Services -> Add Integration -> "ZHA
-Connectivity Sensor". It won't show up until ZHA itself is set up, and
-only one instance is needed since it covers every device automatically.
+Add "ZHA Connectivity Sensor" from Settings -> Devices & Services -> Add
+Integration. That option won't appear until ZHA itself is set up, and
+only one instance is needed; every device is covered automatically.
 
 Devices present at setup always start enabled; the new-device option
 controls anything paired afterwards, and can be changed later from the
@@ -49,18 +49,18 @@ doesn't expose per-device connectivity through any public API. That
 internal state isn't a documented stable contract, so a ZHA update could
 change or remove it without notice.
 
-In practice, this has held steady since ZHA's 2024 rewrite onto an 
-external library, including through ZHA's most recent releases. 
-A [nightly test](tests/test_zha_contract.py) checks that this internal
-state is consistent.
-
-A [functional test suite](tests/test_binary_sensor.py) covers the
-integration's own behavior - connectivity state, the registry fallback
-used when ZHA isn't loaded, device linkage, and the repair issue.
+In practice, this has held steady since ZHA's 2024 rewrite onto an
+external library, including through ZHA's most recent releases.
 
 ## Development
 
 This integration was developed with the assistance of AI (Claude).
+
+A [nightly test](tests/test_zha_contract.py) checks that ZHA's internal
+state hasn't drifted from what's described above. A [weekly functional
+test suite](tests/) covers the integration's own behavior: connectivity
+state, registry fallback and recovery, hot-adding a newly-paired device,
+device linkage, cold-start setup gating, and the repair issue.
 
 ## License
 
