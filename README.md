@@ -50,10 +50,13 @@ internal state isn't a documented stable contract, so a ZHA update could
 change or remove it without notice.
 
 In practice, this has held steady since ZHA's 2024 rewrite onto an 
-external library, including through ZHA's most recent releases.
-
+external library, including through ZHA's most recent releases. 
 A [nightly test](tests/test_zha_contract.py) checks that this internal
 state is consistent.
+
+A [functional test suite](tests/test_binary_sensor.py) covers the
+integration's own behavior - connectivity state, the registry fallback
+used when ZHA isn't loaded, device linkage, and the repair issue.
 
 ## Development
 

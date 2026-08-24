@@ -1,4 +1,9 @@
 pytest
+pytest-asyncio
 homeassistant
 zha
 zha-quirks
+pytest-homeassistant-custom-component
+aiousbwatcher
+universal-silabs-flasher
+ha-silabs-firmware-client

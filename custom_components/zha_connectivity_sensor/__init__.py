@@ -34,11 +34,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ZHAConnectivityConfigEnt
             raise ConfigEntryNotReady("ZHA gateway is not ready yet")
 
     coordinator = ZHAGatewayCoordinator(hass, entry)
-    await coordinator.async_config_entry_first_refresh()
-    entry.runtime_data = coordinator
-
-    await hass.config_entries.async_forward_entry_setups(entry, ["binary_sensor"])
-    entry.async_on_unload(entry.add_update_listener(_async_update_listener))
 
     # Kept in hass.data, not a closure, so an in-progress outage survives
     # a reload of this entry.
@@ -77,7 +72,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ZHAConnectivityConfigEnt
                 translation_key="zha_unavailable",
             )
 
+    # Registered before the first refresh so that refresh's own result
+    # isn't missed -- a coordinator notifies listeners on every refresh,
+    # including the first.
     entry.async_on_unload(coordinator.async_add_listener(_check_zha_availability))
+
+    await coordinator.async_config_entry_first_refresh()
+    entry.runtime_data = coordinator
+
+    await hass.config_entries.async_forward_entry_setups(entry, ["binary_sensor"])
+    entry.async_on_unload(entry.add_update_listener(_async_update_listener))
 
     return True
 
