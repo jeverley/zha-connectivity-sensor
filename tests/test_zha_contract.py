@@ -1,6 +1,6 @@
 """Contract test: guards against ZHA's internal API changing underneath us.
 
-Not a test of our own code -- this only asserts that the private ZHA/zha
+Not a test of our own code: this only asserts that the private ZHA/zha
 internals we rely on (undocumented, not a public API) still look the way
 we expect. A failure here means an upstream ZHA change, not a bug in this
 integration.

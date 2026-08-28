@@ -14,8 +14,8 @@ class ZHAConnectivitySensorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_user(self, user_input=None):
         """Handle the initial step when added via the UI."""
         # single_config_entry in manifest.json already blocks a second
-        # instance before this step runs -- no need to check here too.
-        # Existence check, not readiness -- ZHA being unloaded right now is
+        # instance before this step runs; no need to check here too.
+        # Existence check, not readiness: ZHA being unloaded right now is
         # fine, we just need it configured at all.
         if not self.hass.config_entries.async_entries(ZHA_DOMAIN):
             return self.async_abort(reason="zha_not_configured")

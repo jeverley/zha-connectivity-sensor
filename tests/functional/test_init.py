@@ -24,8 +24,8 @@ IEEE_OBJ = EUI64.convert(IEEE)
 
 # --- Area E: setup-time gating (cold start / first-ever setup) -----------
 #
-# No prior registry entries exist yet, so there's nothing to fall back to
-# -- this is __init__.py's own gate, before setup is ever forwarded to
+# No prior registry entries exist yet, so there's nothing to fall back to:
+# this is __init__.py's own gate, before setup is ever forwarded to
 # binary_sensor.py at all.
 
 

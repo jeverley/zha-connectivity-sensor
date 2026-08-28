@@ -38,7 +38,7 @@ IEEE_OBJ = EUI64.convert(IEEE)
 #
 # The coordinator drives a real refresh through gateway_proxy (the same
 # patched HA-boundary every other area uses), rather than having
-# .data/.last_update_success poked by hand -- so these tests exercise the
+# .data/.last_update_success poked by hand, so these tests exercise the
 # actual _async_update_data path, not just the properties that read it.
 
 
@@ -56,8 +56,8 @@ async def _sensor(
 
     gateway=None drives a real "not ready" refresh (a genuine, expected
     coordinator outcome, same as ZHA being down). last_update_success=False
-    can't be produced through a real refresh -- this coordinator's
-    _async_update_data never raises by design -- so that one case is set
+    can't be produced through a real refresh (this coordinator's
+    _async_update_data never raises by design), so that one case is set
     directly afterwards, to simulate an artificial coordinator failure.
     """
     device_entry = make_zha_device(IEEE)
@@ -96,7 +96,7 @@ async def test_available_disconnected_not_unavailable(
 async def test_device_missing_from_live_gateway_is_unavailable(
     hass: HomeAssistant, config_entry, make_zha_device, gateway_proxy: GatewayProxyState
 ):
-    gateway = FakeGateway(devices={})  # this device isn't in it -- e.g. unpaired
+    gateway = FakeGateway(devices={})  # this device isn't in it, e.g. unpaired
     sensor = await _sensor(hass, config_entry, make_zha_device, gateway_proxy, gateway=gateway)
     assert sensor.available is False
 
@@ -204,7 +204,7 @@ async def test_registry_fallback_skips_entry_without_device(
     assert await hass.config_entries.async_setup(config_entry.entry_id)
     await hass.async_block_till_done()
 
-    # Skipped, not recreated as a live entity -- no state exists for it.
+    # Skipped, not recreated as a live entity: no state exists for it.
     assert hass.states.get(orphan.entity_id) is None
 
 
@@ -276,7 +276,7 @@ async def test_recovers_after_gateway_comes_back(
     )
     assert hass.states.get(entity_id).state == "off"
 
-    # ZHA finishes loading -- the *same* entity should pick this up without
+    # ZHA finishes loading: the *same* entity should pick this up without
     # being re-created, since is_on/available read fresh from
     # coordinator.data on every access.
     gateway_proxy.ready_with(IEEE_OBJ, available=True, last_seen=1700000000.0)
@@ -298,7 +298,7 @@ async def test_hot_add_new_device_via_signal(
 
     Uses its own config entry with enable_new_devices=True (the shared
     `config_entry` fixture defaults it False) so the newly hot-added
-    sensor actually goes live instead of arriving disabled -- that
+    sensor actually goes live instead of arriving disabled. That
     False-by-default behavior is covered separately by
     test_enable_by_default_false_disables_registry_entry.
     """
@@ -366,7 +366,7 @@ async def test_pairing_race_skips_device_not_yet_registered(
     zha_config_entry: MockConfigEntry,
     gateway_proxy: GatewayProxyState,
 ):
-    # Deliberately not calling make_zha_device -- the device isn't in the
+    # Deliberately not calling make_zha_device: the device isn't in the
     # registry yet, as if ZHA reported it before finishing registration.
     gateway_proxy.ready_with(IEEE_OBJ, available=True)
 

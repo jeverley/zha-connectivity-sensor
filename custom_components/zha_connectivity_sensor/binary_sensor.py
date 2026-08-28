@@ -184,7 +184,7 @@ async def async_setup_entry(
             async_add_entities(initial_sensors)
         return
 
-    # No live gateway (or no devices loaded yet) -- fall back to the registry.
+    # No live gateway (or no devices loaded yet); fall back to the registry.
     _LOGGER.warning(
         "ZHA gateway unavailable during setup; recreating known sensors from "
         "the registry so they report disconnected instead of unavailable"

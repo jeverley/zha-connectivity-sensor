@@ -55,7 +55,7 @@ This integration was developed with the assistance of AI (Claude).
 
 A [nightly test](tests/test_zha_contract.py) checks that ZHA's internal
 state hasn't drifted from what's described above. A [weekly functional
-test suite](tests/) covers the integration's own behavior: connectivity
+test suite](tests/functional/) covers the integration's own behavior: connectivity
 state, registry fallback and recovery, hot-adding a newly-paired device,
 device linkage, and cold-start setup gating.
 

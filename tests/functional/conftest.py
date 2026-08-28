@@ -1,10 +1,10 @@
 """Shared fixtures for the functional test suite.
 
 Fakes stand in only for ZHA's own data (a device/gateway shape), never for
-HA's own device/entity registries or config-entry machinery -- those are
+HA's own device/entity registries or config-entry machinery; those are
 exercised for real via pytest-homeassistant-custom-component. See
-test_zha_contract.py for the independent check that these fakes' shape
-still matches ZHA's real classes.
+../test_zha_contract.py for the independent check that these fakes'
+shape still matches ZHA's real classes.
 """
 
 from __future__ import annotations
@@ -34,7 +34,7 @@ def auto_enable_custom_integrations(enable_custom_integrations):
 
 @dataclass
 class FakeDevice:
-    """Stand-in for zha.zigbee.device.Device -- only the attributes read."""
+    """Stand-in for zha.zigbee.device.Device (only the attributes read)."""
 
     ieee: Any
     available: bool | None = True
@@ -43,7 +43,7 @@ class FakeDevice:
 
 @dataclass
 class FakeGateway:
-    """Stand-in for zha.application.gateway.Gateway -- only .devices."""
+    """Stand-in for zha.application.gateway.Gateway (only .devices)."""
 
     devices: dict[Any, FakeDevice] = field(default_factory=dict)
 
@@ -81,7 +81,7 @@ def make_zha_device(device_registry: dr.DeviceRegistry, zha_config_entry: MockCo
 def seed_known_sensor(entity_registry: er.EntityRegistry, config_entry: MockConfigEntry):
     """Factory: seed a prior-run entity registry entry for a device.
 
-    Represents "this sensor already existed from a previous setup" --
+    Represents "this sensor already existed from a previous setup":
     what makes __init__.py's has_known_devices check true (a restart with
     history), as opposed to a genuine first-ever setup (Area E).
     """
@@ -129,7 +129,7 @@ class GatewayProxyState:
 
 @pytest.fixture
 def gateway_proxy(zha_config_entry: MockConfigEntry):
-    """Patch helpers.get_zha_gateway_proxy -- the one real HA-boundary call
+    """Patch helpers.get_zha_gateway_proxy: the one real HA-boundary call
     that get_zha_gateway_and_entry wraps. Patching here flows through to
     __init__.py/coordinator.py/binary_sensor.py automatically, since they
     all call the same unpatched get_zha_gateway_and_entry function object.
