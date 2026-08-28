@@ -17,9 +17,6 @@ Sensors are created for every device, including ones you pair later.
 Whether a newly-paired device's sensor starts out enabled is configurable
 (off by default).
 
-A repair issue is raised under Settings -> Repairs if ZHA is unreachable
-for more than 15 minutes.
-
 ## Requirements
 
 - Home Assistant 2026.8+
@@ -60,7 +57,7 @@ A [nightly test](tests/test_zha_contract.py) checks that ZHA's internal
 state hasn't drifted from what's described above. A [weekly functional
 test suite](tests/) covers the integration's own behavior: connectivity
 state, registry fallback and recovery, hot-adding a newly-paired device,
-device linkage, cold-start setup gating, and the repair issue.
+device linkage, and cold-start setup gating.
 
 ## License
 
