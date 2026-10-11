@@ -357,9 +357,9 @@ async def test_sensor_links_to_zha_device_without_claiming_it(
 
     # The actual regression guard: our config entry must not become an
     # owner of ZHA's device (the "(Helper)" misclassification bug).
+    assert config_entry.entry_id != zha_config_entry.entry_id
     linked_device = dr.async_get(hass).async_get(device_entry.id)
     assert linked_device.config_entry_id == zha_config_entry.entry_id
-    assert linked_device.config_entry_id != config_entry.entry_id
 
 
 async def test_pairing_race_skips_device_not_yet_registered(
